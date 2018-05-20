@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'page-home',
@@ -7,8 +8,26 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
+    datos: FormGroup;
 
-  }
+    constructor(public navCtrl: NavController, public formBuilder: FormBuilder) {
+        this.datos = this.formBuilder.group({
+            nombre: ['', Validators.required],
+            correo: ['', [
+                            Validators.required,
+                            Validators.email
+                        ]
+                    ],
+            contrasena: ['', [
+                                Validators.required,
+                                Validators.minLength(6)
+                            ]
+                        ],
+        });
+    }
+
+    registrar(){
+        console.log("Hola Mundo");
+    }
 
 }

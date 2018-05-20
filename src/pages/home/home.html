@@ -1,14 +1,59 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="primary">
     <ion-title>
-      Ionic Blank
+      Formulario
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content>
+    <form [formGroup]="datos" (ngSubmit)="registrar()">
+        <ion-list>
+            <ion-item>
+                <ion-icon name="person" item-start></ion-icon>
+                <ion-label stacked>Nombres:</ion-label>
+                <ion-input formControlName="nombre" type="text" placeholder="Nombre"></ion-input>
+            </ion-item>
+            <ion-item>
+               <ion-icon name="mail" item-start></ion-icon>
+               <ion-label stacked>Correo electronico:</ion-label>
+               <ion-input formControlName="correo" type="email" placeholder="Email"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-icon name="eye" item-start></ion-icon>
+                     <ion-label stacked>Contraseña:</ion-label>
+                     <ion-input formControlName="contrasena" type="password" placeholder="Contraseña"></ion-input>
+            </ion-item>
+            <ion-item text-center>
+                <button ion-button icon-left large>
+                    <ion-icon name="images"></ion-icon>
+                        Añadir fotos
+                </button>
+            </ion-item>
+        </ion-list>
+        <div *ngIf="datos.get('nombre').invalid && (datos.get('nombre').dirty || datos.get('nombre').touched)" text-center>
+            <div *ngIf="datos.get('nombre').hasError('required')">
+                El nombre es requerido.
+            </div>
+        </div>
+        <div *ngIf="datos.get('correo').invalid && (datos.get('correo').dirty || datos.get('correo').touched)" text-center>
+            <div *ngIf="datos.get('correo').hasError('required')">
+                El correo es requerido.
+            </div>
+            <div *ngIf="datos.get('correo').hasError('email')">
+                El correo es inválido.
+            </div>
+        </div>
+        <div *ngIf="datos.get('contrasena').invalid && (datos.get('contrasena').dirty || datos.get('contrasena').touched)" text-center>
+            <div *ngIf="datos.get('contrasena').hasError('required')">
+                La contraseña es requerida.
+            </div>
+            <div *ngIf="datos.get('contrasena').hasError('minLength')">
+                La contraseña debe tener mínimo 6 caracteres.
+            </div>
+        </div>
+        <div padding>
+            <button ion-button block type="submit" [disabled]="!datos.valid">Guardar</button>
+        </div>
+    </form>
 </ion-content>
