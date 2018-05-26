@@ -13,6 +13,8 @@ export class HomePage {
 
     datos: FormGroup;
 
+    fotos: any[] = [];
+
     constructor(public navCtrl: NavController, public formBuilder: FormBuilder,
                 private imagePicker: ImagePicker) {
         this.datos = this.formBuilder.group({
@@ -31,16 +33,20 @@ export class HomePage {
     }
 
     abrirGaleria(){
-        
+
         let options: ImagePickerOptions = {
             maximumImagesCount: 3
         };
 
-        this.imagePicker.getPictures(options).then((results) => {
-            for (var i = 0; i < results.length; i++) {
-                console.log('Image URI: ' + results[i]);
-            }
-        }, (err) => { });
+        this.imagePicker.getPictures(options)
+            .then((results) => {
+                this.fotos = results;
+
+                for (var i = 0; i < results.length; i++) {
+                    console.log('Image URI: ' + results[i]);
+                }
+            }, (err) => { });
+
     }
 
     registrar(){

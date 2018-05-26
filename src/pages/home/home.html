@@ -52,6 +52,12 @@
                 La contraseña debe tener mínimo 6 caracteres.
             </div>
         </div>
+        <div id="LoadedImages" *ngIf="fotos">
+            <ion-item *ngFor="let item of fotos">
+                <ion-icon name="close-circle"></ion-icon>
+                <img [src]="item" class="imagenes">
+            </ion-item>
+        </div>
         <div padding>
             <button ion-button block type="submit" [disabled]="!datos.valid">Guardar</button>
         </div>
