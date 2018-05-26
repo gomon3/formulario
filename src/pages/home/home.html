@@ -53,8 +53,8 @@
             </div>
         </div>
         <div id="LoadedImages" *ngIf="fotos">
-            <ion-item *ngFor="let item of fotos">
-                <ion-icon name="close-circle"></ion-icon>
+            <ion-item *ngFor="let item of fotos; let i = index">
+                <ion-icon name="close-circle" (click)="borrarFoto(i)"></ion-icon>
                 <img [src]="item" class="imagenes">
             </ion-item>
         </div>

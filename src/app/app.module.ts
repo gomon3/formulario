@@ -9,6 +9,7 @@ import { HomePage } from '../pages/home/home';
 
 //Plugins
 import { ImagePicker } from '@ionic-native/image-picker';
+import { CargarImgProvider } from '../providers/cargar-img/cargar-img';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ImagePicker } from '@ionic-native/image-picker';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    ImagePicker
+    ImagePicker,
+    CargarImgProvider
   ]
 })
 export class AppModule {}
