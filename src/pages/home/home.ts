@@ -99,7 +99,7 @@ export class HomePage {
 
     registrar(){
 
-      
+
 
         if( this.fotos.length < 1 ){
             this.mostrar_mensaje('Debes seleccionar por lo menos una foto');
@@ -125,14 +125,17 @@ export class HomePage {
                   this.presentarAlerta(result['mensaje']);
                 }else{
 
+                  //Eliminación de los valores
+                  this.datos.get('nombre').setValue('');
+                  this.datos.get('correo').setValue('');
+                  this.datos.get('contrasena').setValue('');
+                  /*------------------------------------------*/
+                  this.fotos = [];
+
                   this.presentarAlerta(result['mensaje']);
                 }
 
-                //Eliminación de los valores
-                this.datos.get('nombre').setValue('');
-                this.datos.get('correo').setValue('');
-                this.datos.get('contrasena').setValue('');
-                /*------------------------------------------*/
+
 
                 this.loading.dismiss();
               }, err => {

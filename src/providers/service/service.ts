@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class ServiceProvider {
 
-  dominio: string = 'http://localhost/ionic/insertar.php';
+  dominio: string = 'http://192.168.0.10/ionic/insertar.php';
 
 
   constructor(public http: Http) {
@@ -23,7 +23,7 @@ export class ServiceProvider {
 
         resolve(resp.json());
       }, err =>{
-        
+
         reject(err.json());
       });
 
