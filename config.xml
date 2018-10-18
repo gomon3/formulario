@@ -87,5 +87,5 @@
     <plugin name="cordova-plugin-telerik-imagepicker" spec="^2.2.2">
         <variable name="PHOTO_LIBRARY_USAGE_DESCRIPTION" value="your usage message" />
     </plugin>
-    <engine name="android" spec="~7.0.0" />
+    <engine name="android" spec="7.0.0" />
 </widget>
